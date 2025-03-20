@@ -86,7 +86,7 @@ export default function Quiz() {
         .map((country: common) => country.name.common);
       //8 -> cria um objeto com a pergunta, a resposta correta, as opcoes e a bandeira
       const newQuizQuestion: QuizQuestion = {
-        question: "De quem é essa bandeira comedia?" + " " + rightCountry.flag,
+        question: "De quem é essa bandeira?" + "  " + rightCountry.flag,
         rightAnswer: rightCountry.name.common,
         allOptions: shuffleArray([
           ...incorrectOptions,
@@ -126,9 +126,9 @@ export default function Quiz() {
 
   // 12 -> Componente principal do jogo, renderiza a bandeira, as opcoes e valida se esta certa ou nao
   const viewQuizQuestions = quiz.length > 0 && (
-    <div className="p-4 rounded-xl relative overflow-visible">
+    <div className="rounded-xl relative overflow-visible">
       <div>
-        <h3 className="text-xl pt-4">{quiz[quizIndex].question}</h3>
+        <h3 className="text-xl text-center pt-4">{quiz[quizIndex].question}</h3>
         <ul className="p-0"></ul>
       </div>
 
@@ -148,7 +148,7 @@ export default function Quiz() {
       const buttonBackgroundColor = isCorrectAnswer ? "bg-green-500" : isIncorrectAnswer ? "bg-red-500" : isSelectedAnswer? "bg-yellow-400" : "bg-white";
 
       return (
-        <li key={answer} className="py-4">
+        <li key={answer} className="py-4 list-none">
           <div className="flex items-center justify-between">
             <button
               className={`${buttonColor} ${buttonBackgroundColor} border-2 rounded-lg w-full p-3 text-left hover:${buttonBackgroundColor.replace(
@@ -174,7 +174,7 @@ export default function Quiz() {
           </div>
         </li>
       );
-    })};
+    })}
       {/* Renderiza um novo batao caso o estado selectedAnswer seja verdadeiro */}
       {selectedAnswer && (
         <div className="flex justify-end pt-0">
